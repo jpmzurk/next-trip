@@ -34,7 +34,10 @@ function* getDepartures(action) {
   try {
     const {route, direction, stop} = action.payload;
     const response = yield axios.get(`api/departures/${route}/${direction}/${stop}`);
-    yield put({ type: "SET_DEPARTURES", payload: response.data });
+    const stopID = response.data.pop()
+    const departures = response.data
+    yield put({ type: "SET_DEPARTURES", payload: departures });
+    yield put({ type: "SET_STOPID", payload: stopID })
   } catch (error) {
     console.log("error in get departures");
   }

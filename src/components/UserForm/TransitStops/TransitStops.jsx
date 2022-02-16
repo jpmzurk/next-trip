@@ -20,7 +20,7 @@ const TransitStops = ({ dispatch, stops, direction, route }) => {
 
   useEffect(() => {
     setStop("");
-  }, [])
+  }, [direction])
   
   return (
     <>
@@ -53,7 +53,7 @@ const TransitStops = ({ dispatch, stops, direction, route }) => {
 }
 
 const mapStateToProps = (reduxState) => ({
-  stops: reduxState.routeData.stops
+  stops: reduxState.stops
 })
 
 

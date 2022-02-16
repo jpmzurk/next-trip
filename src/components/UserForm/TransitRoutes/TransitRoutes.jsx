@@ -47,8 +47,8 @@ const TransitRoutes = ({ dispatch, routes, directions }) => {
 };
 
 const mapStateToProps = (reduxState) => ({
-  routes: reduxState.routeData.routes,
-  directions: reduxState.routeData.directions,
+  routes: reduxState.routes,
+  directions: reduxState.directions,
 });
 
 export default connect(mapStateToProps)(TransitRoutes);

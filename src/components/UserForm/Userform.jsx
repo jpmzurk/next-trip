@@ -13,8 +13,6 @@ const Userform = () => {
   );
 };
 
-const mapStateToProps = (reduxState) => ({
-  directions: reduxState.routeData.directions,
-});
 
-export default connect(mapStateToProps)(Userform);
+
+export default connect()(Userform);
