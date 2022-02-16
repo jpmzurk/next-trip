@@ -1,26 +1,23 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+
 const apiConfig = {
   headers: { "Content-type": "application/json" },
 };
 
-router.get("/", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
+    const id = req.params.id;
     const response = await axios.get(
-      "http://svc.metrotransit.org/NexTrip/Routes",
+      `http://svc.metrotransit.org/NexTrip/Directions/${id}`,
       apiConfig
     );
-    const metroRoutes = response.data.filter(
-      (route) => route.ProviderID === "0"
-    );
 
-    res.send(metroRoutes);
+    res.send(response.data);
   } catch (error) {
-    console.log(`error in get tranist routes request`);
+    console.log(`error in get directions routes request`);
   }
 });
-
-
 
 module.exports = router;

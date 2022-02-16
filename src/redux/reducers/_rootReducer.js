@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import routes from './routesReducer';
+import routeData from './routeDataReducer';
 
 const rootReducer =  combineReducers({
-    routes
+    routeData,
 })
 
 export default rootReducer;

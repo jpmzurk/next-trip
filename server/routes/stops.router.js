@@ -5,22 +5,19 @@ const apiConfig = {
   headers: { "Content-type": "application/json" },
 };
 
-router.get("/", async (req, res) => {
+router.get("/:route/:direction", async (req, res) => {
   try {
+    const { route, direction } = req.params;
+
     const response = await axios.get(
-      "http://svc.metrotransit.org/NexTrip/Routes",
+      `http://svc.metrotransit.org/NexTrip/Stops/${route}/${direction}`,
       apiConfig
     );
-    const metroRoutes = response.data.filter(
-      (route) => route.ProviderID === "0"
-    );
 
-    res.send(metroRoutes);
+    res.send(response.data);
   } catch (error) {
-    console.log(`error in get tranist routes request`);
+    console.log(`error in get stops routes request`);
   }
 });
-
-
 
 module.exports = router;
