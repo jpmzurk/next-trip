@@ -2,15 +2,20 @@ import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import TransitRoutes from "./TransitRoutes/TransitRoutes";
 import { connect } from "react-redux";
+import Directions from "./Directions/Directions";
 
-const Userform = (props) => {
+const Userform = ({ directions }) => {
   return (
-    <Routes>
-      <Route element={<TransitRoutes />} path="/" />
-    </Routes>
+    <>
+      <Routes>
+        <Route element={<TransitRoutes />} path="/" />
+      </Routes>
+    </>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (reduxState) => ({
+  directions: reduxState.routeData.directions,
+});
 
 export default connect(mapStateToProps)(Userform);
