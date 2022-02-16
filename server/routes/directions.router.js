@@ -1,10 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+const apiConfig = '../constants/apiConfig.js'
 
-const apiConfig = {
-  headers: { "Content-type": "application/json" },
-};
 
 router.get("/:id", async (req, res) => {
   try {

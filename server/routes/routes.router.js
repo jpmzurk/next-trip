@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const apiConfig = {
-  headers: { "Content-type": "application/json" },
-};
+const apiConfig = '../constants/apiConfig.js'
+
 
 router.get("/", async (req, res) => {
   try {
@@ -11,11 +10,8 @@ router.get("/", async (req, res) => {
       "http://svc.metrotransit.org/NexTrip/Routes",
       apiConfig
     );
-    const metroRoutes = response.data.filter(
-      (route) => route.ProviderID === "0"
-    );
 
-    res.send(metroRoutes);
+    res.send(response.data);
   } catch (error) {
     console.log(`error in get tranist routes request`);
   }
