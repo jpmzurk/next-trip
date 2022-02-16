@@ -1,0 +1,23 @@
+
+.App-header {
+  min-height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  background-image: url("../../../public/nextrip.hero.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.App-header div {
+  color: grey;
+  background-color: white;
+  opacity: .8;
+  width: 11ch;
+  margin-left: 7%;
+}
+
+.App main h2 {
+  text-align: center;
+}
