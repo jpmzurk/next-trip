@@ -30,10 +30,21 @@ function* getStops(action) {
   }
 }
 
+function* getDepartures(action) {
+  try {
+    const {route, direction, stop} = action.payload;
+    const response = yield axios.get(`api/departures/${route}/${direction}/${stop}`);
+    yield put({ type: "SET_DEPARTURES", payload: response.data });
+  } catch (error) {
+    console.log("error in get departures");
+  }
+}
+
 function* getRouteDataSaga() {
   yield takeLatest("FETCH_ROUTES", getRoutes);
   yield takeLatest("FETCH_DIRECTIONS", getDirections);
   yield takeLatest("FETCH_STOPS", getStops);
+  yield takeLatest("FETCH_DEPARTURES", getDepartures);
 }
 
 export default getRouteDataSaga;
