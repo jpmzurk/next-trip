@@ -6,15 +6,26 @@ const apiConfig = "../constants/apiConfig.js";
 router.get("/:route/:direction/:stop", async (req, res) => {
   try {
     const { route, direction, stop } = req.params;
+    // console.log('in get departures',route, direction, stop);
 
-    const response = await axios.get(
+    const responseOne = await axios.get(
       `http://svc.metrotransit.org/NexTrip/${route}/${direction}/${stop}`,
       apiConfig
     );
 
-    res.send(response.data);
+    const responseTwo = await axios.get(
+      `http://svc.metrotransit.org/NexTrip/StopID/${route}/${direction}/${stop}`,
+      apiConfig
+    );
+
+    // console.log('responseOne', responseOne.data);
+    // console.log('responseTwo', responseTwo.data);
+
+    const departureData = [...responseOne.data, responseTwo.data];
+    
+    res.send(departureData);
   } catch (error) {
-    console.log(`error in get stops routes request`);
+    console.log(`error in get departures routes request ${error}`);
   }
 });
 

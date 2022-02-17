@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Stack, MenuItem, FormControl, InputLabel } from "@mui/material";
-import Directions from "../TransitDirections/TransitDirections";
+import { Stack, MenuItem, FormControl } from "@mui/material";
 import StyledSelect from "../StyledSelect/StyledSelect";
+import { useNavigate, useParams, Outlet } from "react-router-dom";
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 
-const TransitRoutes = ({ dispatch, routes, directions }) => {
+const TransitRoutes = ({ dispatch, routes }) => {
   const [route, setRoute] = useState("");
-
+  const navigate = useNavigate();
+  const { routeID } = useParams();
+  
   const handleSelect = (e) => {
-    const selectedValue = e.target.value;
-    setRoute(selectedValue);
-    selectedValue
-      ? dispatch({ type: "FETCH_DIRECTIONS", payload: selectedValue })
-      : dispatch({ type: "CLEAR_DIRECTIONS" });
+    const { value } = e?.target;
+    setRoute(value);
+    if (value) {
+      dispatch({ type: "FETCH_DIRECTIONS", payload: value });
+      navigate(`/${value}`);
+    } else {
+      dispatch({ type: "CLEAR_DIRECTIONS" });
+      navigate("/");
+    }
   };
 
   useEffect(() => {
@@ -20,35 +28,41 @@ const TransitRoutes = ({ dispatch, routes, directions }) => {
   }, []);
 
   return (
-    <Stack>
-      <FormControl fullWidth>
-        {/* <InputLabel id="routesLabel">Routes</InputLabel> */}
-        <StyledSelect
-          onChange={handleSelect}
-          value={route}
-          label="routes"
-          labelId="routesLabel"
-        >
-          <MenuItem value={""}>
-            <em>Select Route</em>
-          </MenuItem>
-          {routes.map((route, i) => {
-            return (
-              <MenuItem key={i} value={route.Route}>
-                {route.Description}
+    <>
+      {routes.length ? (
+        <Stack>
+          <FormControl fullWidth>
+            {/* <InputLabel id="routesLabel">Routes</InputLabel> */}
+            <StyledSelect
+              onChange={handleSelect}
+              value={!route || !routeID ? routeID || "" : route}
+              label="routes"
+              labelId="routesLabel"
+              name="route"
+            >
+              <MenuItem value={""}>
+                <em>Select Route</em>
               </MenuItem>
-            );
-          })}
-        </StyledSelect>
-      </FormControl>
-      {directions.length ? <Directions route={route} /> : null}
-    </Stack>
+              {routes.map(({ Route, Description }, i) => {
+                return (
+                  <MenuItem key={i} value={Route}>
+                    {Description}
+                  </MenuItem>
+                );
+              })}
+            </StyledSelect>
+          </FormControl>
+          <Outlet />
+          {/* {directions.length ? <Directions route={route} /> : null} */}
+        </Stack>
+      ) : <Box sx={{textAlign: 'center'}}><CircularProgress /> </Box>}
+    </>
   );
 };
 
 const mapStateToProps = (reduxState) => ({
-  routes: reduxState.routeData.routes,
-  directions: reduxState.routeData.directions,
+  routes: reduxState.routes,
+  // directions: reduxState.directions,
 });
 
 export default connect(mapStateToProps)(TransitRoutes);
