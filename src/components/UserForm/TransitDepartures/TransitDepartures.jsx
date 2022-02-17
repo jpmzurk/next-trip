@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableFooter from "@mui/material/TableFooter";
-import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TableHead from "@mui/material/TableHead";
 import Paper from "@mui/material/Paper";
@@ -12,15 +11,26 @@ import { Button } from "@mui/material/";
 import { connect } from "react-redux";
 import TableRows from "./TableRows";
 
-const DeparturesTable = ({ departures, stopID }) => {
+const DeparturesTable = ({ departures, stopID, dispatch }) => {
   const [isExpanded, setisExpanded] = useState(false);
 
   const handleExpand = () => {
     setisExpanded(() => !isExpanded);
   };
+
+  useEffect(() => {
+    console.log("mounted");
+
+    return () => {
+      console.log("unmounted");
+      dispatch({ type: "CLEAR_DEPARTURES" });
+      dispatch({ type: "CLEAR_STOPID" });
+    };
+  }, []);
+
   return (
     <>
-      {departures.length ? (
+      {stopID ? (
         <TableContainer component={Paper}>
           <Table
             sx={{ minWidth: 500 }}
@@ -39,13 +49,23 @@ const DeparturesTable = ({ departures, stopID }) => {
                 <TableCell align="right">Departs</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
-              {isExpanded ? (
-                <TableRows departures={departures} />
-              ) : (
-                <TableRows departures={departures.slice(0, 2)} />
-              )}
-            </TableBody>
+            {departures.length ? (
+              <TableBody>
+                {isExpanded ? (
+                  <TableRows departures={departures} />
+                ) : (
+                  <TableRows departures={departures.slice(0, 2)} />
+                )}
+              </TableBody>
+            ) : (
+              <TableBody>
+                <TableRow>
+                  <TableCell></TableCell>
+                  <TableCell>There are no further departures at this stop today</TableCell>
+                  <TableCell></TableCell>
+                </TableRow>
+              </TableBody>
+            )}
             <TableFooter>
               <TableRow>
                 <TableCell>
