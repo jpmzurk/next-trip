@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { MenuItem, FormControl } from "@mui/material";
-import StyledSelect from "../StyledSelect/StyledSelect";
+import { MenuItem, FormControl, InputLabel } from "@mui/material";
+import {StyledSelect} from "../HelperComponents/StyledSelect";
 import { useNavigate, useParams, Outlet } from "react-router-dom";
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
+import Loading from "../HelperComponents/Loading";
+import '../Util.css';
 
 const TransitDirections = ({ dispatch, directions }) => {
   const [direction, setDirection] = useState("");
@@ -34,27 +34,26 @@ const TransitDirections = ({ dispatch, directions }) => {
 
   //useEffect for params changing user backward / forward
   useEffect(() => {
-    if (directionID !== undefined) {
+    if (directionID) {
       setDirection(directionID);
       dispatch({
         type: "FETCH_STOPS",
         payload: { routeID, directionID },
       });
-    } else setDirection("")
+    } else setDirection("");
   }, [dispatch, routeID, directionID]);
 
   return (
     <>
       {directions.length ? (
         <>
-          <FormControl>
-            {/* <InputLabel id="routesLabel">Directions</InputLabel> */}
+          <FormControl className="fadeIn" sx={{width: { xs: '80%', sm: 400, md : 500}}}>
+            <InputLabel id="directionsLabel">Directions</InputLabel>
             <StyledSelect
               onChange={handleSelect}
               value={!direction ? "" : direction}
               label="directions"
               labelId="directionsLabel"
-              defaultValue=""
               name="directions"
             >
               <MenuItem value={""}>
@@ -71,7 +70,9 @@ const TransitDirections = ({ dispatch, directions }) => {
           </FormControl>
           <Outlet />
         </>
-      ) : <Box sx={{textAlign: 'center'}}><CircularProgress /> </Box>}
+      ) : (
+        <Loading />
+      )}
     </>
   );
 };

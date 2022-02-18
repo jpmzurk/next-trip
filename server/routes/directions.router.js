@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const apiConfig = '../constants/apiConfig.js'
-
+const apiConfig = "../constants/apiConfig.js";
 
 router.get("/:id", async (req, res) => {
   try {

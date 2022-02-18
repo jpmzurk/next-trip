@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Stack, MenuItem, FormControl } from "@mui/material";
-import StyledSelect from "../StyledSelect/StyledSelect";
+import {
+  Stack,
+  MenuItem,
+  FormControl,
+  TextField,
+  InputLabel,
+  Box
+} from "@mui/material";
+import { StyledSelect } from "../HelperComponents/StyledSelect";
 import { useNavigate, useParams, Outlet } from "react-router-dom";
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
+import Loading from "../HelperComponents/Loading";
 
 const TransitRoutes = ({ dispatch, routes }) => {
   const [route, setRoute] = useState("");
   const navigate = useNavigate();
   const { routeID } = useParams();
-  
+
   const handleSelect = (e) => {
     const { value } = e?.target;
     setRoute(value);
@@ -25,37 +31,60 @@ const TransitRoutes = ({ dispatch, routes }) => {
 
   useEffect(() => {
     dispatch({ type: "FETCH_ROUTES" });
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       {routes.length ? (
-        <Stack>
-          <FormControl fullWidth>
-            {/* <InputLabel id="routesLabel">Routes</InputLabel> */}
-            <StyledSelect
+        <>
+          <Stack alignItems="center" spacing={{xs: 1, sm: 2, md: 2}}>
+            <FormControl sx={{width: { xs: '80%', sm: 400, md : 500}}}>
+              <InputLabel id="routesLabel">Routes</InputLabel>
+              <StyledSelect
+                onChange={handleSelect}
+                value={!route || !routeID ? routeID || "" : route}
+                label="routes"
+                labelId="routesLabel"
+                name="route"
+              >
+                <MenuItem value={""}>
+                  <em>Select Route</em>
+                </MenuItem>
+                {routes.map(({ Route, Description }, i) => {
+                  return (
+                    <MenuItem key={i} value={Route}>
+                      {Description}
+                    </MenuItem>
+                  );
+                })}
+              </StyledSelect>
+            </FormControl>
+
+            <Outlet />
+          </Stack>
+          {/* <Box sx={{
+        '& .MuiTextField-root': { m: 1, width: '570px' },
+      }}>
+          
+            <TextField
+              id="outlined-select-currency"
+              select
+              label="Select"
+              value={!route ? routeID || "" : route}
               onChange={handleSelect}
-              value={!route || !routeID ? routeID || "" : route}
-              label="routes"
-              labelId="routesLabel"
-              name="route"
+              helperText="Please select your route"
             >
-              <MenuItem value={""}>
-                <em>Select Route</em>
-              </MenuItem>
-              {routes.map(({ Route, Description }, i) => {
-                return (
-                  <MenuItem key={i} value={Route}>
-                    {Description}
-                  </MenuItem>
-                );
-              })}
-            </StyledSelect>
-          </FormControl>
-          <Outlet />
-          {/* {directions.length ? <Directions route={route} /> : null} */}
-        </Stack>
-      ) : <Box sx={{textAlign: 'center'}}><CircularProgress /> </Box>}
+              {routes.map(({ Route, Description }, i) => (
+                <MenuItem key={i} value={Route}>
+                  {Description}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Box> */}
+        </>
+      ) : (
+        <Loading />
+      )}
     </>
   );
 };
