@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { MenuItem, FormControl } from "@mui/material";
-import StyledSelect from "../HelperComponents/StyledSelect";
+import { MenuItem, FormControl, InputLabel } from "@mui/material";
+import {StyledSelect} from "../HelperComponents/StyledSelect";
 import { useNavigate, useParams, Outlet } from "react-router-dom";
 import Loading from "../HelperComponents/Loading";
 import '../Util.css';
@@ -44,8 +44,8 @@ const TransitStops = ({ dispatch, stops }) => {
     <>
       {stops.length ? (
         <>
-          <FormControl className="fadeIn">
-            {/* <InputLabel id="routesLabel">Directions</InputLabel> */}
+          <FormControl className="fadeIn" sx={{width: { xs: '80%', sm: 400, md : 500}}}>
+            <InputLabel id="stopsLabel">Stops</InputLabel>
             <StyledSelect
               onChange={handleSelect}
               value={!stop ? stopID || "" : stop}

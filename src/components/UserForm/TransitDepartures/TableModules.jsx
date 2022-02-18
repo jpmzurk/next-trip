@@ -9,16 +9,17 @@ import {
   CircularProgress,
 } from "@mui/material/";
 import '../Util.css';
+import './Departures.css'
 
 const DeparturesHead = ({ stopID }) => {
   return (
     <TableHead>
       <TableRow>
-        <TableCell>{stopID.StopLabel}</TableCell>
-        <TableCell></TableCell>
-        <TableCell align="right">#{stopID.StopID}</TableCell>
+        <TableCell colSpan={2}>{stopID.StopLabel}</TableCell>
+        {/* <TableCell></TableCell> */}
+        <TableCell align="right">Stop #: {stopID.StopID}</TableCell>
       </TableRow>
-      <TableRow>
+      <TableRow className="tableSubheader">
         <TableCell>Route</TableCell>
         <TableCell>Destination</TableCell>
         <TableCell align="right">Departs</TableCell>
@@ -65,7 +66,7 @@ const NoDepartures = () => {
       <TableRow>
         <TableCell></TableCell>
         <TableCell>
-          There are no further departures at this stop today
+          There are no further departures at this time
         </TableCell>
         <TableCell></TableCell>
       </TableRow>

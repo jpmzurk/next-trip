@@ -1,9 +1,8 @@
 import { styled } from "@mui/material/styles";
-import { Select } from '@mui/material'
+import { Select } from "@mui/material";
 
 const StyledSelect = styled(Select)(({ theme }) => ({
-    minWidth: 220,
-    margin: "0 auto",
-  }));
+  boxShawdow: "0 0 0 0.2rem rgb(0 151 208 / 25%)",
+}));
 
-export default StyledSelect;
+export { StyledSelect };

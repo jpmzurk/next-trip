@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, TableContainer, Paper } from "@mui/material/";
+import { Table } from "@mui/material/";
 import { connect } from "react-redux";
 import {
   DeparturesHead,
@@ -26,21 +26,19 @@ const DeparturesTable = ({ departures, stopID, dispatch }) => {
   return (
     <>
       {stopID ? (
-        <TableContainer component={Paper} className="fadeIn">
-          <Table sx={{ minWidth: 500 }} aria-label="departures table">
-            <DeparturesHead stopID={stopID} />
-            {departures.length ? (
-              <>
-                <DeparturesBody
-                  departures={isExpanded ? departures : departures.slice(0, 2)}
-                />
-              </>
-            ) : (
-              <>{stopID.StopLabel ? <NoDepartures /> : <Loading />}</>
-            )}
-            <DeparturesFooter handleExpand={handleExpand} />
-          </Table>
-        </TableContainer>
+        <Table aria-label="departures table" className="table">
+          <DeparturesHead stopID={stopID} />
+          {departures.length ? (
+            <>
+              <DeparturesBody
+                departures={isExpanded ? departures : departures.slice(0, 3)}
+              />
+            </>
+          ) : (
+            <>{stopID.StopLabel ? <NoDepartures /> : <Loading />}</>
+          )}
+          <DeparturesFooter handleExpand={handleExpand} />
+        </Table>
       ) : null}
     </>
   );
