@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Stack, MenuItem, FormControl } from "@mui/material";
-import StyledSelect from "../StyledSelect/StyledSelect";
+import StyledSelect from "../HelperComponents/StyledSelect";
 import { useNavigate, useParams, Outlet } from "react-router-dom";
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
+import Loading from "../HelperComponents/Loading";
 
 const TransitRoutes = ({ dispatch, routes }) => {
   const [route, setRoute] = useState("");
@@ -25,7 +24,7 @@ const TransitRoutes = ({ dispatch, routes }) => {
 
   useEffect(() => {
     dispatch({ type: "FETCH_ROUTES" });
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -53,9 +52,8 @@ const TransitRoutes = ({ dispatch, routes }) => {
             </StyledSelect>
           </FormControl>
           <Outlet />
-          {/* {directions.length ? <Directions route={route} /> : null} */}
         </Stack>
-      ) : <Box sx={{textAlign: 'center'}}><CircularProgress /> </Box>}
+      ) : <Loading/>}
     </>
   );
 };

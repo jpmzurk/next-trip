@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const apiConfig = '../constants/apiConfig.js'
-
+const apiConfig = "../constants/apiConfig.js";
 
 router.get("/", async (req, res) => {
   try {
@@ -16,7 +15,5 @@ router.get("/", async (req, res) => {
     console.log(`error in get tranist routes request`);
   }
 });
-
-
 
 module.exports = router;

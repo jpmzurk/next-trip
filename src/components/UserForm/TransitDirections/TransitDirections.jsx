@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { MenuItem, FormControl } from "@mui/material";
-import StyledSelect from "../StyledSelect/StyledSelect";
+import StyledSelect from "../HelperComponents/StyledSelect";
 import { useNavigate, useParams, Outlet } from "react-router-dom";
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
+import Loading from "../HelperComponents/Loading";
+import '../Util.css';
 
 const TransitDirections = ({ dispatch, directions }) => {
   const [direction, setDirection] = useState("");
@@ -40,14 +40,14 @@ const TransitDirections = ({ dispatch, directions }) => {
         type: "FETCH_STOPS",
         payload: { routeID, directionID },
       });
-    } else setDirection("")
+    } else setDirection("");
   }, [dispatch, routeID, directionID]);
 
   return (
     <>
       {directions.length ? (
         <>
-          <FormControl>
+          <FormControl className="fadeIn">
             {/* <InputLabel id="routesLabel">Directions</InputLabel> */}
             <StyledSelect
               onChange={handleSelect}
@@ -71,7 +71,9 @@ const TransitDirections = ({ dispatch, directions }) => {
           </FormControl>
           <Outlet />
         </>
-      ) : <Box sx={{textAlign: 'center'}}><CircularProgress /> </Box>}
+      ) : (
+        <Loading />
+      )}
     </>
   );
 };
