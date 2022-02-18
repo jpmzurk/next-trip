@@ -4,9 +4,7 @@ import {
   Stack,
   MenuItem,
   FormControl,
-  TextField,
   InputLabel,
-  Box
 } from "@mui/material";
 import { StyledSelect } from "../HelperComponents/StyledSelect";
 import { useNavigate, useParams, Outlet } from "react-router-dom";
@@ -37,13 +35,13 @@ const TransitRoutes = ({ dispatch, routes }) => {
     <>
       {routes.length ? (
         <>
-          <Stack alignItems="center" spacing={{xs: 1, sm: 2, md: 2}}>
-            <FormControl sx={{width: { xs: '80%', sm: 400, md : 500}}}>
-              <InputLabel id="routesLabel">Routes</InputLabel>
+          <Stack alignItems="center" spacing={{xs: 2, sm: 2, md: 2}}>
+            <FormControl sx={{width: { xs: '80%', sm: 570}}}>
+              <InputLabel id="routesLabel">Route</InputLabel>
               <StyledSelect
                 onChange={handleSelect}
                 value={!route || !routeID ? routeID || "" : route}
-                label="routes"
+                label="route"
                 labelId="routesLabel"
                 name="route"
               >

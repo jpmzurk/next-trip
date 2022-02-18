@@ -31,7 +31,6 @@ const TransitStops = ({ dispatch, stops }) => {
   //useEffect for params changing user backward / forward
   useEffect(() => {
     if (stopID !== undefined && stopID !== stop) {
-      console.log("stopID is: ", stopID);
       setStop(stopID);
       dispatch({
         type: "FETCH_DEPARTURES",
@@ -44,12 +43,12 @@ const TransitStops = ({ dispatch, stops }) => {
     <>
       {stops.length ? (
         <>
-          <FormControl className="fadeIn" sx={{width: { xs: '80%', sm: 400, md : 500}}}>
-            <InputLabel id="stopsLabel">Stops</InputLabel>
+          <FormControl className="fadeIn" sx={{width: { xs: '80%', sm: 570}}}>
+            <InputLabel id="stopsLabel">Stop</InputLabel>
             <StyledSelect
               onChange={handleSelect}
               value={!stop ? stopID || "" : stop}
-              label="stops"
+              label="stop"
               labelId="stopsLabel"
               defaultValue=""
               name="stops"

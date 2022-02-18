@@ -16,7 +16,6 @@ const DeparturesHead = ({ stopID }) => {
     <TableHead>
       <TableRow>
         <TableCell colSpan={2}>{stopID.StopLabel}</TableCell>
-        {/* <TableCell></TableCell> */}
         <TableCell align="right">Stop #: {stopID.StopID}</TableCell>
       </TableRow>
       <TableRow className="tableSubheader">
@@ -33,7 +32,7 @@ function DeparturesBody({ departures }) {
       <TableBody className="fadeIn">
         {departures.map((departure) => (
           <TableRow key={departure.DepartureTime}>
-            <TableCell component="th" scope="row" style={{ width: 160 }}>
+            <TableCell style={{ width: 160 }}>
               {departure.Route}
             </TableCell>
             <TableCell style={{ width: 160 }}>

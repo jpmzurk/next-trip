@@ -47,12 +47,12 @@ const TransitDirections = ({ dispatch, directions }) => {
     <>
       {directions.length ? (
         <>
-          <FormControl className="fadeIn" sx={{width: { xs: '80%', sm: 400, md : 500}}}>
-            <InputLabel id="directionsLabel">Directions</InputLabel>
+          <FormControl className="fadeIn" sx={{width: { xs: '80%', sm: 570}}}>
+            <InputLabel id="directionsLabel">Direction</InputLabel>
             <StyledSelect
               onChange={handleSelect}
               value={!direction ? "" : direction}
-              label="directions"
+              label="direction"
               labelId="directionsLabel"
               name="directions"
             >
