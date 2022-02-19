@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "@mui/material/";
+import { Table, Stack } from "@mui/material/";
 import { connect } from "react-redux";
 import {
   DeparturesHead,
@@ -8,17 +8,16 @@ import {
   NoDepartures,
   Loading,
 } from "./TableModules";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const DeparturesTable = ({ departures, stopId, dispatch }) => {
-  const [isExpanded, setisExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const { routeID, directionID, stopID } = useParams();
 
   const handleExpand = () => {
-    setisExpanded(() => !isExpanded);
+    setIsExpanded(() => !isExpanded);
   };
 
-  console.log('stopId', stopId);
   useEffect(() => {
     if (stopId !== stopID){
       dispatch({
@@ -27,16 +26,15 @@ const DeparturesTable = ({ departures, stopId, dispatch }) => {
       });
     }
     return () => {
-      if (!stopID) {
       dispatch({ type: "CLEAR_DEPARTURES" });
-      dispatch({ type: "CLEAR_STOPID" });}
+      dispatch({ type: "CLEAR_STOPID" })
     };
   }, [dispatch]);
 
   return (
-    <>
+    <Stack alignItems="center" sx={{pb: 6, m: '0 auto'}}>
       {stopId ? (
-        <Table aria-label="departures table" sx={{width: ['80%', 660, 770, 1140], bgcolor: '#f5f5f4', mt: 6}}>
+        <Table aria-label="departures table" sx={{width: ['80%', 660, 770, 1140], bgcolor: '#f5f5f4'}}>
           <DeparturesHead stopID={stopId} />
           {departures.length ? (
             <>
@@ -47,10 +45,10 @@ const DeparturesTable = ({ departures, stopId, dispatch }) => {
           ) : (
             <>{stopID.StopLabel ? <NoDepartures /> : <Loading />}</>
           )}
-          <DeparturesFooter handleExpand={handleExpand} />
+          <DeparturesFooter handleExpand={handleExpand} isExpanded={isExpanded}/>
         </Table>
       ) : null}
-    </>
+    </Stack>
   );
 };
 const mapStateToProps = (reduxState) => ({

@@ -16,7 +16,6 @@ const TransitStops = ({ dispatch, stops }) => {
     setStop(value);
 
     if (value) {
-      console.log("handle select payload stopID: ", value);
       dispatch({
         type: "FETCH_DEPARTURES",
         payload: { routeID, directionID, stopID: value },
@@ -52,6 +51,7 @@ const TransitStops = ({ dispatch, stops }) => {
               labelId="stopsLabel"
               defaultValue=""
               name="stops"
+              sx={{mb: 6}}
             >
               <MenuItem value={""}>
                 <em>Select Stop</em>

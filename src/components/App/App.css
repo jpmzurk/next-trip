@@ -1,3 +1,22 @@
+html {
+  font-size: 17px;
+}
+@media (max-width: 900px) {
+  html { font-size: 15px; }
+}
+@media (max-width: 400px) {
+  html { font-size: 13px; }
+}
+
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
 .App-header {
   min-height: 10rem;
   background-image: url("../../../public/nextrip.hero.jpeg");
@@ -28,8 +47,9 @@
 .App main h2 {
   text-align: center;
   color: #626462;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
+  padding: 20px 0;
 }
 
 @media screen and (min-width: 768px) {

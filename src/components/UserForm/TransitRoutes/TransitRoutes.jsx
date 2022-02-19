@@ -35,7 +35,7 @@ const TransitRoutes = ({ dispatch, routes }) => {
     <>
       {routes.length ? (
         <>
-          <Stack alignItems="center" spacing={{xs: 2, sm: 2, md: 2}}>
+          <Stack alignItems="center" spacing={{xs: 2}}>
             <FormControl sx={{width: { xs: '80%', sm: 570}}}>
               <InputLabel id="routesLabel">Route</InputLabel>
               <StyledSelect

@@ -8,7 +8,6 @@ import createSagaMiddleware from "redux-saga";
 import logger from "redux-logger";
 import { HashRouter as Router } from "react-router-dom";
 
-import "./index.css";
 import rootReducer from "./redux/reducers/_rootReducer";
 import rootSaga from "./redux/sagas/_root.saga";
 
