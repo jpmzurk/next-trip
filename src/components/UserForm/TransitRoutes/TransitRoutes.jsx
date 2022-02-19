@@ -16,14 +16,13 @@ const TransitRoutes = ({ dispatch, routes }) => {
   const { routeID } = useParams();
 
   const handleSelect = (e) => {
-    const { value } = e?.target;
+    const { value } = e.target;
     setRoute(value);
     if (value) {
-      dispatch({ type: "FETCH_DIRECTIONS", payload: value });
       navigate(`/${value}`);
     } else {
       dispatch({ type: "CLEAR_DIRECTIONS" });
-      navigate("/");
+      navigate("");
     }
   };
 
@@ -44,6 +43,7 @@ const TransitRoutes = ({ dispatch, routes }) => {
                 label="route"
                 labelId="routesLabel"
                 name="route"
+                aria-label="route-dropdown"
               >
                 <MenuItem value={""}>
                   <em>Select Route</em>
@@ -60,25 +60,6 @@ const TransitRoutes = ({ dispatch, routes }) => {
 
             <Outlet />
           </Stack>
-          {/* <Box sx={{
-        '& .MuiTextField-root': { m: 1, width: '570px' },
-      }}>
-          
-            <TextField
-              id="outlined-select-currency"
-              select
-              label="Select"
-              value={!route ? routeID || "" : route}
-              onChange={handleSelect}
-              helperText="Please select your route"
-            >
-              {routes.map(({ Route, Description }, i) => (
-                <MenuItem key={i} value={Route}>
-                  {Description}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Box> */}
         </>
       ) : (
         <Loading />
@@ -89,7 +70,6 @@ const TransitRoutes = ({ dispatch, routes }) => {
 
 const mapStateToProps = (reduxState) => ({
   routes: reduxState.routes,
-  // directions: reduxState.directions,
 });
 
 export default connect(mapStateToProps)(TransitRoutes);

@@ -19,17 +19,16 @@ const DeparturesTable = ({ departures, stopId, dispatch }) => {
   };
 
   useEffect(() => {
-    if (stopId !== stopID){
       dispatch({
         type: "FETCH_DEPARTURES",
         payload: { routeID, directionID, stopID },
       });
-    }
+
     return () => {
       dispatch({ type: "CLEAR_DEPARTURES" });
       dispatch({ type: "CLEAR_STOPID" })
     };
-  }, [dispatch]);
+  }, [dispatch, routeID, directionID, stopID]);
 
   return (
     <Stack alignItems="center" sx={{pb: 6, m: '0 auto'}}>

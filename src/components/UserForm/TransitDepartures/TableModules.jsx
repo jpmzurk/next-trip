@@ -8,7 +8,7 @@ import {
   CircularProgress,
   TableCell
 } from "@mui/material/";
-import "../Util.css";
+import "../FadeIn.css";
 import "./Departures.css";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
@@ -35,7 +35,7 @@ const bodyStyles = {
 
 const DeparturesHead = ({ stopID }) => {
   return (
-    <TableHead>
+    <TableHead className="fadeIn">
       <TableRow>
         <TableCell sx={{fontSize: '1.8rem', width: '80%', pl: 3, ...headerStyles}}colSpan={2}>{stopID.StopLabel}</TableCell>
         <TableCell sx={{fontSize: '1rem', pr: 3, ...headerStyles}}align="right">
@@ -69,7 +69,7 @@ function DeparturesBody({ departures }) {
 
 const DeparturesFooter = ({ handleExpand, isExpanded }) => {
   return (
-    <TableFooter>
+    <TableFooter className="fadeIn">
       <TableRow>
         <TableCell>
           <IconButton aria-label="open or close" onClick={handleExpand}>
