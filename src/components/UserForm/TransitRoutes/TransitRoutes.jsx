@@ -4,9 +4,7 @@ import {
   Stack,
   MenuItem,
   FormControl,
-  TextField,
   InputLabel,
-  Box
 } from "@mui/material";
 import { StyledSelect } from "../HelperComponents/StyledSelect";
 import { useNavigate, useParams, Outlet } from "react-router-dom";
@@ -18,14 +16,13 @@ const TransitRoutes = ({ dispatch, routes }) => {
   const { routeID } = useParams();
 
   const handleSelect = (e) => {
-    const { value } = e?.target;
+    const { value } = e.target;
     setRoute(value);
     if (value) {
-      dispatch({ type: "FETCH_DIRECTIONS", payload: value });
       navigate(`/${value}`);
     } else {
       dispatch({ type: "CLEAR_DIRECTIONS" });
-      navigate("/");
+      navigate("");
     }
   };
 
@@ -37,15 +34,16 @@ const TransitRoutes = ({ dispatch, routes }) => {
     <>
       {routes.length ? (
         <>
-          <Stack alignItems="center" spacing={{xs: 1, sm: 2, md: 2}}>
-            <FormControl sx={{width: { xs: '80%', sm: 400, md : 500}}}>
-              <InputLabel id="routesLabel">Routes</InputLabel>
+          <Stack alignItems="center" spacing={{xs: 2}}>
+            <FormControl sx={{width: { xs: '80%', sm: 570}}}>
+              <InputLabel id="routesLabel">Route</InputLabel>
               <StyledSelect
                 onChange={handleSelect}
                 value={!route || !routeID ? routeID || "" : route}
-                label="routes"
+                label="route"
                 labelId="routesLabel"
                 name="route"
+                aria-label="route-dropdown"
               >
                 <MenuItem value={""}>
                   <em>Select Route</em>
@@ -62,25 +60,6 @@ const TransitRoutes = ({ dispatch, routes }) => {
 
             <Outlet />
           </Stack>
-          {/* <Box sx={{
-        '& .MuiTextField-root': { m: 1, width: '570px' },
-      }}>
-          
-            <TextField
-              id="outlined-select-currency"
-              select
-              label="Select"
-              value={!route ? routeID || "" : route}
-              onChange={handleSelect}
-              helperText="Please select your route"
-            >
-              {routes.map(({ Route, Description }, i) => (
-                <MenuItem key={i} value={Route}>
-                  {Description}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Box> */}
         </>
       ) : (
         <Loading />
@@ -91,7 +70,6 @@ const TransitRoutes = ({ dispatch, routes }) => {
 
 const mapStateToProps = (reduxState) => ({
   routes: reduxState.routes,
-  // directions: reduxState.directions,
 });
 
 export default connect(mapStateToProps)(TransitRoutes);

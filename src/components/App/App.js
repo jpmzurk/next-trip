@@ -15,7 +15,6 @@ const theme = createTheme({
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',
-      'Roboto',
       '"Helvetica Neue"',
       'Arial',
       'sans-serif',
@@ -23,7 +22,16 @@ const theme = createTheme({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(','),
-  }
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 676,
+      md: 992,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
 });
 
 function App() {
@@ -31,7 +39,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <header className="App-header">
-          <div>NexTrip</div>
+          <div>
+            <h1>NexTrip</h1>
+          </div>
         </header>
         <main>
           <h2>Real-time Departures</h2>

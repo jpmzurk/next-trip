@@ -1,58 +1,55 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { MenuItem, FormControl, InputLabel } from "@mui/material";
-import {StyledSelect} from "../HelperComponents/StyledSelect";
+import { StyledSelect } from "../HelperComponents/StyledSelect";
 import { useNavigate, useParams, Outlet } from "react-router-dom";
 import Loading from "../HelperComponents/Loading";
-import '../Util.css';
+import "../FadeIn.css";
 
-const TransitStops = ({ dispatch, stops }) => {
+const TransitStops = ({ dispatch, stops,  }) => {
   const [stop, setStop] = useState("");
   const navigate = useNavigate();
   const { routeID, directionID, stopID } = useParams();
 
   const handleSelect = (e) => {
-    const { value } = e?.target;
+    const { value } = e.target;
     setStop(value);
-
     if (value) {
-      console.log("handle select payload stopID: ", value);
-      dispatch({
-        type: "FETCH_DEPARTURES",
-        payload: { routeID, directionID, stopID: value },
-      });
       navigate(value);
     } else {
       dispatch({ type: "CLEAR_DEPARTURES" });
-      navigate("/");
+      navigate("");
     }
   };
 
-  //useEffect for params changing user backward / forward
   useEffect(() => {
-    if (stopID !== undefined && stopID !== stop) {
-      console.log("stopID is: ", stopID);
-      setStop(stopID);
-      dispatch({
-        type: "FETCH_DEPARTURES",
-        payload: { routeID, directionID, stopID },
-      });
-    } else setStop("");
-  }, [dispatch, routeID, directionID, stopID]);
+    setStop("")
+    dispatch({
+      type: "FETCH_STOPS",
+      payload: { routeID, directionID },
+    });
+  }, [dispatch, routeID, directionID]);
 
+  
+  
   return (
     <>
       {stops.length ? (
         <>
-          <FormControl className="fadeIn" sx={{width: { xs: '80%', sm: 400, md : 500}}}>
-            <InputLabel id="stopsLabel">Stops</InputLabel>
+          <FormControl
+            className="fadeIn"
+            sx={{ width: { xs: "80%", sm: 570 } }}
+          >
+            <InputLabel id="stopsLabel">Stop</InputLabel>
             <StyledSelect
               onChange={handleSelect}
               value={!stop ? stopID || "" : stop}
-              label="stops"
+              aria-label="stop-dropdown"
+              label="stop"
               labelId="stopsLabel"
               defaultValue=""
               name="stops"
+              sx={{ mb: 6 }}
             >
               <MenuItem value={""}>
                 <em>Select Stop</em>
