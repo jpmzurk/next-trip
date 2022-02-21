@@ -13,7 +13,6 @@ import "./Departures.css";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
 
-
 const headerStyles = {
   fontWeight: 700,
   color: "#626462",
@@ -72,14 +71,14 @@ const DeparturesFooter = ({ handleExpand, isExpanded }) => {
     <TableFooter className="fadeIn">
       <TableRow>
         <TableCell>
-          <IconButton aria-label="open or close" onClick={handleExpand}>
+          <IconButton name="iconButton" aria-label="open or close" onClick={handleExpand}>
             {isExpanded ? (
               <>
-                <RemoveCircleOutlineOutlinedIcon color="primary" />
+                <RemoveCircleOutlineOutlinedIcon name="collapse" color="primary" />
               </>
             ) : (
               <>
-                <AddCircleOutlineOutlinedIcon color="primary" />
+                <AddCircleOutlineOutlinedIcon name="expand" color="primary" />
               </>
             )}
           </IconButton>

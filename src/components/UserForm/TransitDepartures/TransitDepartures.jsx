@@ -15,7 +15,7 @@ const DeparturesTable = ({ departures, stopId, dispatch }) => {
   const { routeID, directionID, stopID } = useParams();
 
   const handleExpand = () => {
-    setIsExpanded(() => !isExpanded);
+    setIsExpanded(!isExpanded);
   };
 
   useEffect(() => {

@@ -1,39 +1,39 @@
 import React from "react";
-import renderer from "react-test-renderer";
-import { TableFooter } from "./TableModules";
-import { cleanup, fireEvent, render } from "@testing-library/react";
-import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
-import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
+import { shallow } from 'enzyme';
+import { DeparturesFooter } from "./TableModules";
+import { configure } from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
+configure({ adapter: new Adapter() });
 
+describe("Icons flip when boolean state flips", () => {
+  const mockClick = jest.fn();
 
-it("Icons flip when boolean state flips", () => {
-  const { queryByLabelText, getByLabelText } = render(
-    <TableFooter labelOn="On" labelOff="Off" />
-  );
+  
+  //expect footer to = snapshot
 
-  expect(queryByLabelText(/off/i)).toBeTruthy();
+  it('should show collapse', () => {
+    
+    const footer = shallow(<DeparturesFooter handleExpand={mockClick} isExpanded={true} />);
 
-  fireEvent.click(getByLabelText(/off/i));
+    expect(footer).toMatchSnapshot()
 
-  expect(queryByLabelText(/on/i)).toBeTruthy();
+    expect(footer.find('[name="collapse"]').exists()).toBeTruthy();
+
+    const button = footer.find('[name="iconButton"]')
+    button.simulate("click")
+    expect(mockClick).toHaveBeenCalled();
+  });
+
+  it('should show expand', () => {
+    const footer = shallow(<DeparturesFooter handleExpand={jest.fn()} isExpanded={false} />);
+
+    expect(footer.find('[name="expand"]').exists()).toBeTruthy()
+  })
+
 });
 
+// expect(enzymeToJson(cardItem)).toMatchSnapshot();
 
 
 
-// test('Icons flip when boolean state flips', () => {
-
-//     const component = renderer.create(
-//       <TableFooter handleExpand={} isExpanded={false}/>,
-//     );
-//     let tree = component.toJSON();
-//     expect(tree).toMatchSnapshot();
-
-//     // manually trigger the callback
-//     tree.props.onClick();
-//     // re-rendering
-//     tree = component.toJSON();
-//     expect(tree).toMatchSnapshot();
-
-//   });
