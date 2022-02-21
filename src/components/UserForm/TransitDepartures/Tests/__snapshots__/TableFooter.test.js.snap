@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DeparturesFooter should between expand and collapse   should match snapshot 1`] = `
+exports[`DeparturesFooter should switch between expand and collapse depending on state should match snapshot 1`] = `
 <ForwardRef(TableFooter)
   className="fadeIn"
 >
