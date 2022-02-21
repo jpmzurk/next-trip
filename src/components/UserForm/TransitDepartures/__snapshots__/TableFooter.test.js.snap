@@ -1,3 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Icons flip when boolean state flips should show collapse 1`] = `ShallowWrapper {}`;
+exports[`DeparturesFooter should between expand and collapse   should match snapshot 1`] = `
+<ForwardRef(TableFooter)
+  className="fadeIn"
+>
+  <ForwardRef(TableRow)>
+    <ForwardRef(TableCell)>
+      <ForwardRef(IconButton)
+        aria-label="open or close"
+        name="iconButton"
+        onClick={[MockFunction]}
+      >
+        <Memo(ForwardRef(RemoveCircleOutlineOutlinedIcon))
+          color="primary"
+          name="collapse"
+        />
+      </ForwardRef(IconButton)>
+    </ForwardRef(TableCell)>
+  </ForwardRef(TableRow)>
+</ForwardRef(TableFooter)>
+`;

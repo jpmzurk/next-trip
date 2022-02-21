@@ -1,39 +1,38 @@
 import React from "react";
-import { shallow } from 'enzyme';
+import { shallow } from "enzyme";
 import { DeparturesFooter } from "./TableModules";
-import { configure } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import { shallowToJson } from 'enzyme-to-json';
+import { configure } from "enzyme";
+import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 
 configure({ adapter: new Adapter() });
-
-describe("Icons flip when boolean state flips", () => {
+describe("DeparturesFooter should between expand and collapse  ", () => {
   const mockClick = jest.fn();
 
-  
-  //expect footer to = snapshot
+  it("should match snapshot", () => {
+    const tableFooter = shallow(
+      <DeparturesFooter handleExpand={mockClick} isExpanded={true} />
+    );
 
-  it('should show collapse', () => {
-    
-    const footer = shallow(<DeparturesFooter handleExpand={mockClick} isExpanded={true} />);
+    expect(shallowToJson(tableFooter)).toMatchSnapshot();
+  })
 
-    expect(footer).toMatchSnapshot()
+  it("should show collapse", () => {
+    const tableFooter = shallow(
+      <DeparturesFooter handleExpand={mockClick} isExpanded={true} />
+    );
+    expect(tableFooter.find('[name="collapse"]').exists()).toBeTruthy();
 
-    expect(footer.find('[name="collapse"]').exists()).toBeTruthy();
-
-    const button = footer.find('[name="iconButton"]')
-    button.simulate("click")
+    const button = tableFooter.find('[name="iconButton"]');
+    button.simulate("click");
     expect(mockClick).toHaveBeenCalled();
   });
 
-  it('should show expand', () => {
-    const footer = shallow(<DeparturesFooter handleExpand={jest.fn()} isExpanded={false} />);
+  it("should show expand", () => {
+    const tableFooter = shallow(
+      <DeparturesFooter handleExpand={jest.fn()} isExpanded={false} />
+    );
 
-    expect(footer.find('[name="expand"]').exists()).toBeTruthy()
-  })
-
+    expect(tableFooter.find('[name="expand"]').exists()).toBeTruthy();
+  });
 });
-
-// expect(enzymeToJson(cardItem)).toMatchSnapshot();
-
-
-
