@@ -28,7 +28,12 @@ const TransitStops = ({ dispatch, stops }) => {
       type: "FETCH_STOPS",
       payload: { routeID, directionID },
     });
+    return () => {
+      dispatch({type: 'CLEAR_STOPS'});
+    }
+
   }, [dispatch, routeID, directionID]);
+
 
   return (
     <>
