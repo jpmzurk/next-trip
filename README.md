@@ -4,7 +4,7 @@ NexTrip Clone
 
 ## Description
 
-MetroTransit’s NexTrip application is a great tool for users to plan their trips around the metro area.  The problem is that navigating within the tool doesn’t work. The user cannot use the browser back and forward buttons to toggle between each step of their route planning.  This project solves that issue by creating a clean workflow for the user to interact with the tool however they need. 
+MetroTransit’s NexTrip application is a great tool for users to plan their trips around the metro area.  However, navigation within the application is less than ideal. The user cannot use the browser back and forward buttons to toggle between each step of their route planning.  This project solves that issue by providing a workflow for the user to interact with the application however they choose. 
 
 
 ### Application & test setup
