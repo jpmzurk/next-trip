@@ -6,7 +6,7 @@ import {
   TableBody,
   IconButton,
   CircularProgress,
-  TableCell
+  TableCell,
 } from "@mui/material/";
 import "../FadeIn.css";
 import "./Departures.css";
@@ -17,7 +17,7 @@ const headerStyles = {
   fontWeight: 700,
   color: "#626462",
   lineHeight: 1.1,
-}
+};
 const subHeaderStyles = {
   fontWeight: 700,
   color: "#626462",
@@ -29,22 +29,31 @@ const bodyStyles = {
   color: "#626462",
   fontWeight: 500,
   fontSize: "1.2rem",
-}
+};
 
-
-const DeparturesHead = ({ stopID }) => {
+const DeparturesHeader = ({ stopID }) => {
   return (
     <TableHead className="fadeIn">
       <TableRow>
-        <TableCell sx={{fontSize: '1.8rem', width: '80%', pl: 3, ...headerStyles}}colSpan={2}>{stopID.StopLabel}</TableCell>
-        <TableCell sx={{fontSize: '1rem', pr: 3, ...headerStyles}}align="right">
+        <TableCell
+          sx={{ fontSize: "1.8rem", width: "80%", pl: 3, ...headerStyles }}
+          colSpan={2}
+        >
+          {stopID.StopLabel}
+        </TableCell>
+        <TableCell
+          sx={{ fontSize: "1rem", pr: 3, ...headerStyles }}
+          align="right"
+        >
           <strong>Stop #</strong>: {stopID.StopID}
         </TableCell>
       </TableRow>
       <TableRow className="tableSubheader">
-        <TableCell sx={{pl: 3, ...subHeaderStyles}}> Route </TableCell>
-        <TableCell sx={{...subHeaderStyles}}>Destination</TableCell>
-        <TableCell align="right" sx={{pr: 3, ...subHeaderStyles}}>Departs</TableCell>
+        <TableCell sx={{ pl: 3, ...subHeaderStyles }}> Route </TableCell>
+        <TableCell sx={{ ...subHeaderStyles }}>Destination</TableCell>
+        <TableCell align="right" sx={{ pr: 3, ...subHeaderStyles }}>
+          Departs
+        </TableCell>
       </TableRow>
     </TableHead>
   );
@@ -55,9 +64,11 @@ function DeparturesBody({ departures }) {
     <TableBody className="fadeIn">
       {departures.map((departure) => (
         <TableRow key={departure.DepartureTime}>
-          <TableCell sx={{pl: 3,  ...bodyStyles }}>{departure.Route}</TableCell>
-          <TableCell sx={{ width: 500, ...bodyStyles }}>{departure.Description}</TableCell>
-          <TableCell sx={{pr: 3, ...bodyStyles }} align="right">
+          <TableCell name="route" sx={{ pl: 3, ...bodyStyles }}>{departure.Route}</TableCell>
+          <TableCell name="stop" sx={{ width: 500, ...bodyStyles }}>
+            {departure.Description}
+          </TableCell>
+          <TableCell name="departures" sx={{ pr: 3, ...bodyStyles }} align="right">
             {departure.DepartureText}
           </TableCell>
         </TableRow>
@@ -71,14 +82,26 @@ const DeparturesFooter = ({ handleExpand, isExpanded }) => {
     <TableFooter className="fadeIn">
       <TableRow>
         <TableCell>
-          <IconButton name="iconButton" aria-label="open or close" onClick={handleExpand}>
+          <IconButton
+            name="iconButton"
+            aria-label="open or close"
+            onClick={handleExpand}
+          >
             {isExpanded ? (
               <>
-                <RemoveCircleOutlineOutlinedIcon name="collapse" color="primary" />
+                <RemoveCircleOutlineOutlinedIcon
+                  aria-label="close"
+                  name="collapse"
+                  color="primary"
+                />
               </>
             ) : (
               <>
-                <AddCircleOutlineOutlinedIcon name="expand" color="primary" />
+                <AddCircleOutlineOutlinedIcon
+                  aria-label="open"
+                  name="expand"
+                  color="primary"
+                />
               </>
             )}
           </IconButton>
@@ -115,7 +138,7 @@ const Loading = () => {
 };
 
 export {
-  DeparturesHead,
+  DeparturesHeader,
   DeparturesBody,
   DeparturesFooter,
   NoDepartures,

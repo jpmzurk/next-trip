@@ -12,6 +12,7 @@ exports[`DeparturesFooter should switch between expand and collapse depending on
         onClick={[MockFunction]}
       >
         <Memo(ForwardRef(RemoveCircleOutlineOutlinedIcon))
+          aria-label="close"
           color="primary"
           name="collapse"
         />

@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableBody should render a mapped list should match snapshot 1`] = `
+<ForwardRef(TableBody)
+  className="fadeIn"
+>
+  <ForwardRef(TableRow)>
+    <ForwardRef(TableCell)
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "pl": 3,
+        }
+      }
+    >
+      3
+    </ForwardRef(TableCell)>
+    <ForwardRef(TableCell)
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "width": 500,
+        }
+      }
+    >
+      Rosedale/Rapid
+    </ForwardRef(TableCell)>
+    <ForwardRef(TableCell)
+      align="right"
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "pr": 3,
+        }
+      }
+    >
+      3 mins
+    </ForwardRef(TableCell)>
+  </ForwardRef(TableRow)>
+  <ForwardRef(TableRow)>
+    <ForwardRef(TableCell)
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "pl": 3,
+        }
+      }
+    >
+      3
+    </ForwardRef(TableCell)>
+    <ForwardRef(TableCell)
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "width": 500,
+        }
+      }
+    >
+      Rosedale/Rapid
+    </ForwardRef(TableCell)>
+    <ForwardRef(TableCell)
+      align="right"
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "pr": 3,
+        }
+      }
+    >
+      12 mins
+    </ForwardRef(TableCell)>
+  </ForwardRef(TableRow)>
+  <ForwardRef(TableRow)>
+    <ForwardRef(TableCell)
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "pl": 3,
+        }
+      }
+    >
+      3
+    </ForwardRef(TableCell)>
+    <ForwardRef(TableCell)
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "width": 500,
+        }
+      }
+    >
+      Rosedale/Rapid
+    </ForwardRef(TableCell)>
+    <ForwardRef(TableCell)
+      align="right"
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "pr": 3,
+        }
+      }
+    >
+      6:44
+    </ForwardRef(TableCell)>
+  </ForwardRef(TableRow)>
+  <ForwardRef(TableRow)>
+    <ForwardRef(TableCell)
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "pl": 3,
+        }
+      }
+    >
+      3
+    </ForwardRef(TableCell)>
+    <ForwardRef(TableCell)
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "width": 500,
+        }
+      }
+    >
+      Rosedale/Rapid
+    </ForwardRef(TableCell)>
+    <ForwardRef(TableCell)
+      align="right"
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "pr": 3,
+        }
+      }
+    >
+      6:56
+    </ForwardRef(TableCell)>
+  </ForwardRef(TableRow)>
+  <ForwardRef(TableRow)>
+    <ForwardRef(TableCell)
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "pl": 3,
+        }
+      }
+    >
+      3
+    </ForwardRef(TableCell)>
+    <ForwardRef(TableCell)
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "width": 500,
+        }
+      }
+    >
+      Rosedale/Rapid
+    </ForwardRef(TableCell)>
+    <ForwardRef(TableCell)
+      align="right"
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.2rem",
+          "fontWeight": 500,
+          "pr": 3,
+        }
+      }
+    >
+      7:08
+    </ForwardRef(TableCell)>
+  </ForwardRef(TableRow)>
+</ForwardRef(TableBody)>
+`;

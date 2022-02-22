@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Table, Stack } from "@mui/material/";
 import { connect } from "react-redux";
 import {
-  DeparturesHead,
+  DeparturesHeader,
   DeparturesBody,
   DeparturesFooter,
   NoDepartures,
@@ -34,7 +34,7 @@ const DeparturesTable = ({ departures, stopId, dispatch }) => {
     <Stack alignItems="center" sx={{pb: 6, m: '0 auto'}}>
       {stopId ? (
         <Table aria-label="departures table" sx={{width: ['80%', 660, 770, 1140], bgcolor: '#f5f5f4'}}>
-          <DeparturesHead stopID={stopId} />
+          <DeparturesHeader stopID={stopId} />
           {departures.length ? (
             <>
               <DeparturesBody

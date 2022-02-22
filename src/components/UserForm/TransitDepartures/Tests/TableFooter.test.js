@@ -1,11 +1,10 @@
 import React from "react";
-import { shallow, configure } from "enzyme";
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
+import { shallow } from "enzyme";
 import { shallowToJson } from 'enzyme-to-json';
 import { DeparturesFooter } from "../TableModules";
+import '../../../../enzymeConfig';
 
-configure({ adapter: new Adapter() });
-describe("DeparturesFooter should switch between expand and collapse depending on state", () => {
+describe("TableFooter should switch between expand and collapse depending on state", () => {
   const mockClick = jest.fn();
   const props = {
     handleExpand: mockClick,
@@ -13,17 +12,13 @@ describe("DeparturesFooter should switch between expand and collapse depending o
   }
 
   it("should match snapshot", () => {
-    const tableFooter = shallow(
-      <DeparturesFooter {...props}/>
-    );
+    const tableFooter = shallow(<DeparturesFooter {...props}/>);
 
     expect(shallowToJson(tableFooter)).toMatchSnapshot();
   })
 
-  it("should show collapse", () => {
-    const tableFooter = shallow(
-      <DeparturesFooter {...props} />
-    );
+  it("should show collapse if state is true", () => {
+    const tableFooter = shallow(<DeparturesFooter {...props}/>);
     expect(tableFooter.find('[name="collapse"]').exists()).toBeTruthy();
 
     const button = tableFooter.find('[name="iconButton"]');
@@ -31,11 +26,10 @@ describe("DeparturesFooter should switch between expand and collapse depending o
     expect(mockClick).toHaveBeenCalled();
   });
 
-  it("should show expand", () => {
+  it("should show expand if state is false", () => {
     const tableFooter = shallow(
       <DeparturesFooter handleExpand={mockClick} isExpanded={false} />
     );
-
     expect(tableFooter.find('[name="expand"]').exists()).toBeTruthy();
   });
 });

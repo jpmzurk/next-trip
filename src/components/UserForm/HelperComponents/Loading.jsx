@@ -4,7 +4,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 const Loading = () => {
   return (
-    <Box sx={{ textAlign: "center" }}>
+    <Box name="loading" sx={{ textAlign: "center" }}>
       <CircularProgress />
     </Box>
   );
