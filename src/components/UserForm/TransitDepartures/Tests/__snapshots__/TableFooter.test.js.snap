@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeparturesFooter should switch between expand and collapse depending on state should match snapshot 1`] = `
+<ForwardRef(TableFooter)
+  className="fadeIn"
+>
+  <ForwardRef(TableRow)>
+    <ForwardRef(TableCell)>
+      <ForwardRef(IconButton)
+        aria-label="open or close"
+        name="iconButton"
+        onClick={[MockFunction]}
+      >
+        <Memo(ForwardRef(RemoveCircleOutlineOutlinedIcon))
+          aria-label="close"
+          color="primary"
+          name="collapse"
+        />
+      </ForwardRef(IconButton)>
+    </ForwardRef(TableCell)>
+  </ForwardRef(TableRow)>
+</ForwardRef(TableFooter)>
+`;

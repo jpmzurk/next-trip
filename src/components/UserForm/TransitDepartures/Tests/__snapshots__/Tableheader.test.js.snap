@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table header renders properly should match snapshot 1`] = `
+<ForwardRef(TableHead)
+  className="fadeIn"
+>
+  <ForwardRef(TableRow)>
+    <ForwardRef(TableCell)
+      colSpan={2}
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1.8rem",
+          "fontWeight": 700,
+          "lineHeight": 1.1,
+          "pl": 3,
+          "width": "80%",
+        }
+      }
+    >
+      Franklin Ave Station
+    </ForwardRef(TableCell)>
+    <ForwardRef(TableCell)
+      align="right"
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1rem",
+          "fontWeight": 700,
+          "lineHeight": 1.1,
+          "pr": 3,
+        }
+      }
+    >
+      <strong>
+        Stop #
+      </strong>
+      : 
+      #5748
+    </ForwardRef(TableCell)>
+  </ForwardRef(TableRow)>
+  <ForwardRef(TableRow)
+    className="tableSubheader"
+  >
+    <ForwardRef(TableCell)
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1rem",
+          "fontWeight": 700,
+          "letterSpacing": ".5px",
+          "pl": 3,
+        }
+      }
+    >
+       Route 
+    </ForwardRef(TableCell)>
+    <ForwardRef(TableCell)
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1rem",
+          "fontWeight": 700,
+          "letterSpacing": ".5px",
+        }
+      }
+    >
+      Destination
+    </ForwardRef(TableCell)>
+    <ForwardRef(TableCell)
+      align="right"
+      sx={
+        Object {
+          "color": "#626462",
+          "fontSize": "1rem",
+          "fontWeight": 700,
+          "letterSpacing": ".5px",
+          "pr": 3,
+        }
+      }
+    >
+      Departs
+    </ForwardRef(TableCell)>
+  </ForwardRef(TableRow)>
+</ForwardRef(TableHead)>
+`;

@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import {
-  Stack,
-  MenuItem,
-  FormControl,
-  InputLabel,
-} from "@mui/material";
+import { Stack, MenuItem, FormControl, InputLabel } from "@mui/material";
 import { StyledSelect } from "../HelperComponents/StyledSelect";
 import { useNavigate, useParams, Outlet } from "react-router-dom";
 import Loading from "../HelperComponents/Loading";
@@ -34,8 +29,8 @@ const TransitRoutes = ({ dispatch, routes }) => {
     <>
       {routes.length ? (
         <>
-          <Stack alignItems="center" spacing={{xs: 2}}>
-            <FormControl sx={{width: { xs: '80%', sm: 570}}}>
+          <Stack alignItems="center" spacing={{ xs: 2 }}>
+            <FormControl sx={{ width: { xs: "80%", sm: 570 } }}>
               <InputLabel id="routesLabel">Route</InputLabel>
               <StyledSelect
                 onChange={handleSelect}

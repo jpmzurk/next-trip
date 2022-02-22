@@ -6,7 +6,7 @@ import { useNavigate, useParams, Outlet } from "react-router-dom";
 import Loading from "../HelperComponents/Loading";
 import "../FadeIn.css";
 
-const TransitStops = ({ dispatch, stops,  }) => {
+const TransitStops = ({ dispatch, stops }) => {
   const [stop, setStop] = useState("");
   const navigate = useNavigate();
   const { routeID, directionID, stopID } = useParams();
@@ -23,15 +23,13 @@ const TransitStops = ({ dispatch, stops,  }) => {
   };
 
   useEffect(() => {
-    setStop("")
+    setStop("");
     dispatch({
       type: "FETCH_STOPS",
       payload: { routeID, directionID },
     });
   }, [dispatch, routeID, directionID]);
 
-  
-  
   return (
     <>
       {stops.length ? (
