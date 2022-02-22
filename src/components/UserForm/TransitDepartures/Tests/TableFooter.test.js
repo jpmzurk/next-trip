@@ -1,24 +1,24 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { shallowToJson } from 'enzyme-to-json';
+import { shallowToJson } from "enzyme-to-json";
 import { DeparturesFooter } from "../TableModules";
-import '../../../../enzymeConfig';
+import "../../../../enzymeConfig";
 
 describe("TableFooter should switch between expand and collapse depending on state", () => {
   const mockClick = jest.fn();
   const props = {
     handleExpand: mockClick,
-    isExpanded : true
-  }
+    isExpanded: true,
+  };
 
   it("should match snapshot", () => {
-    const tableFooter = shallow(<DeparturesFooter {...props}/>);
+    const tableFooter = shallow(<DeparturesFooter {...props} />);
 
     expect(shallowToJson(tableFooter)).toMatchSnapshot();
-  })
+  });
 
   it("should show collapse if state is true", () => {
-    const tableFooter = shallow(<DeparturesFooter {...props}/>);
+    const tableFooter = shallow(<DeparturesFooter {...props} />);
     expect(tableFooter.find('[name="collapse"]').exists()).toBeTruthy();
 
     const button = tableFooter.find('[name="iconButton"]');

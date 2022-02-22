@@ -1,13 +1,9 @@
 html {
   font-size: 17px;
 }
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   html { font-size: 15px; }
 }
-@media (max-width: 400px) {
-  html { font-size: 13px; }
-}
-
 
 body {
   margin: 0;
@@ -18,7 +14,7 @@ body {
 
 
 .App-header {
-  min-height: 10rem;
+  min-height: 11rem;
   background-image: url("../../../public/nextrip.hero.jpeg");
   background-size: cover;
   background-position: 90% 50%;
@@ -69,7 +65,7 @@ body {
 
 @media screen and (min-width: 992px) {
   .App-header {
-    height: 17.2rem;
+    min-height: 17.2rem;
   }
   .App-header div {
     max-width: 905px;

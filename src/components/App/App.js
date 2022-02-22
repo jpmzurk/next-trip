@@ -6,22 +6,22 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#0097d0',
+      main: "#0097d0",
     },
   },
   typography: {
     fontFamily: [
-      'Open Sans',
-      '-apple-system',
-      'BlinkMacSystemFont',
+      "Open Sans",
+      "-apple-system",
+      "BlinkMacSystemFont",
       '"Segoe UI"',
       '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
+      "Arial",
+      "sans-serif",
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
-    ].join(','),
+    ].join(","),
   },
   breakpoints: {
     values: {

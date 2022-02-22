@@ -31,7 +31,7 @@ const bodyStyles = {
   fontSize: "1.2rem",
 };
 
-const DeparturesHeader = ({ stopID }) => {
+const DeparturesHeader = ({ __stopId }) => {
   return (
     <TableHead className="fadeIn">
       <TableRow>
@@ -39,13 +39,13 @@ const DeparturesHeader = ({ stopID }) => {
           sx={{ fontSize: "1.8rem", width: "80%", pl: 3, ...headerStyles }}
           colSpan={2}
         >
-          {stopID.StopLabel}
+          {__stopId.StopLabel}
         </TableCell>
         <TableCell
           sx={{ fontSize: "1rem", pr: 3, ...headerStyles }}
           align="right"
         >
-          <strong>Stop #</strong>: {stopID.StopID}
+          <strong>Stop #</strong>: {__stopId.StopID}
         </TableCell>
       </TableRow>
       <TableRow className="tableSubheader">
@@ -64,11 +64,17 @@ function DeparturesBody({ departures }) {
     <TableBody className="fadeIn">
       {departures.map((departure) => (
         <TableRow key={departure.DepartureTime}>
-          <TableCell name="route" sx={{ pl: 3, ...bodyStyles }}>{departure.Route}</TableCell>
+          <TableCell name="route" sx={{ pl: 3, ...bodyStyles }}>
+            {departure.Route}
+          </TableCell>
           <TableCell name="stop" sx={{ width: 500, ...bodyStyles }}>
             {departure.Description}
           </TableCell>
-          <TableCell name="departures" sx={{ pr: 3, ...bodyStyles }} align="right">
+          <TableCell
+            name="departures"
+            sx={{ pr: 3, ...bodyStyles }}
+            align="right"
+          >
             {departure.DepartureText}
           </TableCell>
         </TableRow>

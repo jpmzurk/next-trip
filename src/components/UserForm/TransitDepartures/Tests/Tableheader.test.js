@@ -14,14 +14,14 @@ describe("Table header renders properly", () => {
   let tableHeader;
 
   beforeEach(() => {
-     tableHeader = shallow(<DeparturesHeader {...mockProps} />);
-  })
-  
+    tableHeader = shallow(<DeparturesHeader {...mockProps} />);
+  });
+
   it("should match snapshot", () => {
     expect(shallowToJson(tableHeader)).toMatchSnapshot();
   });
 
   it("should render subheaderClass", () => {
-    expect(tableHeader.find('.tableSubheader').exists()).toBeTruthy()
-  })
+    expect(tableHeader.find(".tableSubheader").exists()).toBeTruthy();
+  });
 });

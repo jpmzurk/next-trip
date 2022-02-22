@@ -15,7 +15,7 @@ describe("TableBody should render a mapped list", () => {
   };
 
   it("should match snapshot", () => {
-    const tableBody = shallow(<DeparturesBody {...props}/>)
+    const tableBody = shallow(<DeparturesBody {...props} />);
     expect(shallowToJson(tableBody)).toMatchSnapshot();
   });
 });
