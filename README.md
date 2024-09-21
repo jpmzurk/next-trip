@@ -1,6 +1,6 @@
 # Project
 
-NexTrip Clone
+NexTrip
 
 ## Description
 
