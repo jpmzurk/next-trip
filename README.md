@@ -20,6 +20,3 @@ The example unit tests were created with Jest and Enzyme, and are found in the T
 2. Local state management with url params would be the best fit with the application design.  Noticing the uni-directional flow of the user form, I opted to store user input data in local state and url params rather than global state (redux).   Managing user input globally in redux is often desirable, but only if data flow or component structure demands it.  Storing the selected state in the url params and mirroring that with component state proved to be simple and effective. 
 
 3. Using sagas and reducers to store fetched data is a clean and effective way to manage data from external API calls. Individual files and functions within redux made developing and debugging very straightforward.  
-
-4. In creating the scope for this project I emphasized the functionality and styling of the product  rather than focusing on unit testing, and test driven development. After revisiting the brief, I would redirect my effort to more unit tests rather than focusing on the product on the dom. 
-
