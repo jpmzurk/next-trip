@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { HashRouter as Router } from "react-router-dom";
+import { applyMiddleware, compose, createStore } from "redux";
+import logger from "redux-logger";
+import createSagaMiddleware from "redux-saga";
 import App from "./components/App/App";
 import reportWebVitals from "./reportWebVitals";
-import { createStore, applyMiddleware } from "redux";
-import { Provider } from "react-redux";
-import createSagaMiddleware from "redux-saga";
-import logger from "redux-logger";
-import { HashRouter as Router } from "react-router-dom";
 
 import rootReducer from "./redux/reducers/_rootReducer";
 import rootSaga from "./redux/sagas/_root.saga";
@@ -15,7 +15,11 @@ const sagaMiddleware = createSagaMiddleware();
 
 const middleware = [sagaMiddleware, logger];
 
-const store = createStore(rootReducer, applyMiddleware(...middleware));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(...middleware))
+);
 
 sagaMiddleware.run(rootSaga);
 
