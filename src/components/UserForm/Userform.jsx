@@ -1,19 +1,19 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
 import { connect } from "react-redux";
+import { Route, Routes } from "react-router-dom";
+import TransitDepartures from "./TransitDepartures/TransitDepartures";
+import TransitDirections from "./TransitDirections/TransitDirections";
 import TransitRoutes from "./TransitRoutes/TransitRoutes";
 import TransitStops from "./TransitStops/TransitStops";
-import TransitDirections from "./TransitDirections/TransitDirections";
-import TransitDepartures from "./TransitDepartures/TransitDepartures";
 
 const Userform = () => {
   return (
     <>
       <Routes>
-        <Route element={<TransitRoutes />} path="/" >
-          <Route element={<TransitDirections />} path="/:routeID"  >
-            <Route element={<TransitStops />} path={"/:routeID/:directionID"}>
-              <Route element={<TransitDepartures/>} path={"/:routeID/:directionID/:stopID"}/>
+        <Route element={<TransitRoutes />} path="/">
+          <Route element={<TransitDirections />} path="/:routeID">
+            <Route element={<TransitStops />} path={":directionID"}>
+              <Route element={<TransitDepartures />} path={":stopID"} />
             </Route>
           </Route>
         </Route>

@@ -6,7 +6,7 @@ const apiConfig = "../constants/apiConfig.js";
 router.get("/", async (req, res) => {
   try {
     const response = await axios.get(
-      "http://svc.metrotransit.org/NexTrip/Routes",
+      "http://svc.metrotransit.org/nextrip/routes",
       apiConfig
     );
 

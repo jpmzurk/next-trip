@@ -1,13 +1,13 @@
+import { FormControl, InputLabel, MenuItem } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { MenuItem, FormControl, InputLabel } from "@mui/material";
-import { StyledSelect } from "../HelperComponents/StyledSelect";
-import { useNavigate, useParams, Outlet } from "react-router-dom";
-import Loading from "../HelperComponents/Loading";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import "../FadeIn.css";
+import Loading from "../HelperComponents/Loading";
+import { StyledSelect } from "../HelperComponents/StyledSelect";
 
 const TransitDirections = ({ dispatch, directions }) => {
-  const [direction, setDirection] = useState("");
+  const [direction, setDirection] = useState(null);
   const navigate = useNavigate();
   const { routeID, directionID } = useParams();
 
@@ -15,8 +15,8 @@ const TransitDirections = ({ dispatch, directions }) => {
     const { value } = e.target;
     setDirection(value);
 
-    if (value) {
-      navigate(value);
+    if (value > -1) {
+      navigate(`/${routeID}/${value}`);
     } else {
       dispatch({ type: "CLEAR_STOPS" });
       navigate("");
@@ -48,10 +48,10 @@ const TransitDirections = ({ dispatch, directions }) => {
               <MenuItem value={""}>
                 <em>Select Direction</em>
               </MenuItem>
-              {directions.map((__direction, i) => {
+              {directions.map(({ direction_id, direction_name }, i) => {
                 return (
-                  <MenuItem key={i} value={__direction.Value}>
-                    {__direction.Text}
+                  <MenuItem key={i} value={direction_id}>
+                    {direction_name}
                   </MenuItem>
                 );
               })}

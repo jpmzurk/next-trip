@@ -1,9 +1,9 @@
+import { FormControl, InputLabel, MenuItem, Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Stack, MenuItem, FormControl, InputLabel } from "@mui/material";
-import { StyledSelect } from "../HelperComponents/StyledSelect";
-import { useNavigate, useParams, Outlet } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import Loading from "../HelperComponents/Loading";
+import { StyledSelect } from "../HelperComponents/StyledSelect";
 
 const TransitRoutes = ({ dispatch, routes }) => {
   const [route, setRoute] = useState("");
@@ -25,6 +25,7 @@ const TransitRoutes = ({ dispatch, routes }) => {
     dispatch({ type: "FETCH_ROUTES" });
   }, [dispatch]);
 
+  const noSelectedRoute = !route || !routeID;
   return (
     <>
       {routes.length ? (
@@ -34,7 +35,7 @@ const TransitRoutes = ({ dispatch, routes }) => {
               <InputLabel id="routesLabel">Route</InputLabel>
               <StyledSelect
                 onChange={handleSelect}
-                value={!route || !routeID ? routeID || "" : route}
+                value={noSelectedRoute ? routeID || "" : route}
                 label="route"
                 labelId="routesLabel"
                 name="route"
@@ -43,10 +44,10 @@ const TransitRoutes = ({ dispatch, routes }) => {
                 <MenuItem value={""}>
                   <em>Select Route</em>
                 </MenuItem>
-                {routes.map(({ Route, Description }, i) => {
+                {routes.map(({ route_id, route_label }, i) => {
                   return (
-                    <MenuItem key={i} value={Route}>
-                      {Description}
+                    <MenuItem key={i} value={route_id}>
+                      {route_label}
                     </MenuItem>
                   );
                 })}

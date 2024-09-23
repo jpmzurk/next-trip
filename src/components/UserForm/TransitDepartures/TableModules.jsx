@@ -1,17 +1,17 @@
-import React from "react";
-import {
-  TableRow,
-  TableHead,
-  TableFooter,
-  TableBody,
-  IconButton,
-  CircularProgress,
-  TableCell,
-} from "@mui/material/";
-import "../FadeIn.css";
-import "./Departures.css";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
+import {
+  CircularProgress,
+  IconButton,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableRow,
+} from "@mui/material/";
+import React from "react";
+import "../FadeIn.css";
+import "./Departures.css";
 
 const headerStyles = {
   fontWeight: 700,
@@ -63,19 +63,19 @@ function DeparturesBody({ departures }) {
   return (
     <TableBody className="fadeIn">
       {departures.map((departure) => (
-        <TableRow key={departure.DepartureTime}>
+        <TableRow key={departure.departure_time}>
           <TableCell name="route" sx={{ pl: 3, ...bodyStyles }}>
-            {departure.Route}
+            {departure.route_short_name}
           </TableCell>
           <TableCell name="stop" sx={{ width: 500, ...bodyStyles }}>
-            {departure.Description}
+            {departure.description}
           </TableCell>
           <TableCell
             name="departures"
             sx={{ pr: 3, ...bodyStyles }}
             align="right"
           >
-            {departure.DepartureText}
+            {departure.departure_text}
           </TableCell>
         </TableRow>
       ))}
@@ -144,9 +144,9 @@ const Loading = () => {
 };
 
 export {
-  DeparturesHeader,
   DeparturesBody,
   DeparturesFooter,
-  NoDepartures,
+  DeparturesHeader,
   Loading,
+  NoDepartures,
 };

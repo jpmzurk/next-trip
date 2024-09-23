@@ -1,10 +1,10 @@
+import { FormControl, InputLabel, MenuItem } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { MenuItem, FormControl, InputLabel } from "@mui/material";
-import { StyledSelect } from "../HelperComponents/StyledSelect";
-import { useNavigate, useParams, Outlet } from "react-router-dom";
-import Loading from "../HelperComponents/Loading";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import "../FadeIn.css";
+import Loading from "../HelperComponents/Loading";
+import { StyledSelect } from "../HelperComponents/StyledSelect";
 
 const TransitStops = ({ dispatch, stops }) => {
   const [stop, setStop] = useState("");
@@ -29,11 +29,9 @@ const TransitStops = ({ dispatch, stops }) => {
       payload: { routeID, directionID },
     });
     return () => {
-      dispatch({type: 'CLEAR_STOPS'});
-    }
-
+      dispatch({ type: "CLEAR_STOPS" });
+    };
   }, [dispatch, routeID, directionID]);
-
 
   return (
     <>
@@ -59,8 +57,8 @@ const TransitStops = ({ dispatch, stops }) => {
               </MenuItem>
               {stops.map((stop, i) => {
                 return (
-                  <MenuItem key={i} value={stop.Value}>
-                    {stop.Text}
+                  <MenuItem key={i} value={stop.place_code}>
+                    {stop.description}
                   </MenuItem>
                 );
               })}

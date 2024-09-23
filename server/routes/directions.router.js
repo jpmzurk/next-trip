@@ -7,7 +7,7 @@ router.get("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const response = await axios.get(
-      `http://svc.metrotransit.org/NexTrip/Directions/${id}`,
+      `http://svc.metrotransit.org/nextrip/directions/${id}`,
       apiConfig
     );
 
